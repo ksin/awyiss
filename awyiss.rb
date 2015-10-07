@@ -43,35 +43,30 @@ class SlackBot
   class AwYiss
     include AwYisser
 
-    attr_reader :client, :sfw, :channel
+    attr_reader :sfw, :text
 
-    def initialize
+    def initialize(channel, text)
+      @channel = channel
+      @text = text
       @sfw = false
-      @client = Slack::RealTime::Client.new
-      setup_client
+      @client = Slack::Web::Client.new
     end
 
-    def setup_client
-      client.on :message do |data|
-        @channel = data['channel']
+    def post_to_slack
+      @client.chat_postMessage(channel: @channel, text: message, as_user: true)
+    end
 
-        case data['text']
-        when /^awyiss\ssfw\s(\S.+)/ then
+    def message
+      case text.strip
+        when /^awyiss\ssfw\s(\S.+)/
           @sfw = true
-          respond_to_slack(awyissify($1))
-        when /^awyiss\s(\S.+)/ then
+          awyissify($1)
+        when /^awyiss\s(\S.+)/
           @sfw = false
-          respond_to_slack(awyissify($1))
-        when /^awyiss/ then
-          respond_to_slack("aw <@#{data['user']}>?")
-        end
+          awyissify($1)
+        else
+          "wut?"
       end
-    end
-
-    def respond_to_slack(message)
-      client.web_client.chat_postMessage channel: channel, text: message, as_user: true
     end
   end
 end
-
-SlackBot::AwYiss.new.client.start!

@@ -1,4 +1,7 @@
 source 'http://rubygems.org'
 
+ruby "2.2.2"
+
 gem 'slack-ruby-client'
-gem 'rake'
+gem 'sinatra'
+gem 'json'
