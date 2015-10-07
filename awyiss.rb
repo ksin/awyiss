@@ -1,6 +1,7 @@
-require 'slack-ruby-client'
+require "slack-ruby-client"
 require "net/http"
 require "uri"
+require "json"
 
 puts "WARNING!!! awyisser tweets all your yisses to @awyisser, so maybe don't put anything you don't want tweeted?"
 
@@ -26,7 +27,7 @@ module AwYisser
     params = {"phrase" => phrase}
     params["sfw"] = true if sfw # required to only add sfw key conditionally because {"sfw" => false} still registers as true
     response = httpPostRequest(URL, params)
-    eval(response.body)[:link]
+    JSON.parse(response.body)["link"]
   end
 
   def httpPostRequest(url, data)
