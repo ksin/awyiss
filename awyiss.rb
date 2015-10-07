@@ -23,7 +23,9 @@ module AwYisser
   end
 
   def get_image(phrase)
-    response = httpPostRequest(URL, {"phrase" => phrase, "sfw" => sfw})
+    params = {"phrase" => phrase}
+    params["sfw"] = true if sfw # required to only add sfw key conditionally because {"sfw" => false} still registers as true
+    response = httpPostRequest(URL, params)
     eval(response.body)[:link]
   end
 

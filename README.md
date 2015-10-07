@@ -1,6 +1,6 @@
 # Slack bot awyisser
 
-![awyiss](http://i.imgur.com/UMbEf0C.png)
+![awyiss](https://media.giphy.com/media/3oEduVVu2Dci4om7cI/giphy.gif)
 
 A simple way to run your own Slack bot for generating awyiss images via the awesome [awyisser](http://www.awyisser.com/).
 
