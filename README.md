@@ -6,17 +6,17 @@ A simple way to run your own Slack bot for generating awyiss images via the awes
 
 ## Installation
 
-Create a new bot user integration for your Slack group via [https://my.slack.com/services/new/bot](https://my.slack.com/services/new/bot)
+1. [Create a new bot user](https://my.slack.com/services/new/bot) integration for your Slack group.
 
-Store the Slack api token for your bot:
-```
-export SLACK_API_TOKEN=<Your bot's token>
-```
+2. Deploy this Sinatra app to [Heroku](https://devcenter.heroku.com/articles/rack#sinatra) or whatever service you prefer.
 
-Start the bot:
-```
-ruby awyiss.rb
-```
+3. Setup a new [outgoing webhook](https://my.slack.com/services/new/outgoing-webhook) for your Slack group.
+
+    - Set the Trigger Word as "awyiss" (and any other words you want)
+
+    - Set the URL as the one you deployed your app to + `/awyiss`. For Heroku, it will look something like `https://floating-thunder-7193.herokuapp.com/awyiss`
+
+4. Export your Slack bot's token (NOT your webhook token) as `SLACK_API_TOKEN` to Heroku / other environment.
 
 ## How to awyiss
 
