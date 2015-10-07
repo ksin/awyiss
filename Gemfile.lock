@@ -10,6 +10,7 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     multipart-post (2.0.0)
+    rake (10.4.2)
     slack-ruby-client (0.3.0)
       eventmachine
       faraday
@@ -23,6 +24,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake
   slack-ruby-client
 
 BUNDLED WITH
