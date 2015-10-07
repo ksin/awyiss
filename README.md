@@ -1,6 +1,6 @@
 # Slack bot awyisser
 
-![awyiss](https://media.giphy.com/media/3oEduVVu2Dci4om7cI/giphy.gif)
+![awyiss](screencapture.gif)
 
 A simple way to run your own Slack bot for generating awyiss images via the awesome [awyisser](http://www.awyisser.com/).
 
@@ -28,8 +28,8 @@ awyiss motha fuckin very awsome happed.
 ## Playing it safe (sfw aw yissing)
 
 ```
-awyiss sfw lololol
-awyiss sfw tornadoes
+awyiss sfw hoi!!
+awyiss sfw hoi! im temmie!!!
 ```
 
 ***WARNING!!!*** awyisser tweets all your yisses to [@awyisser](https://twitter.com/awyisser), so maybe don't put anything you don't want tweeted?
