@@ -57,6 +57,7 @@ class SlackBot
     end
 
     def message
+      # return maintenance_message
       case text.strip
         when /^awyiss\ssfw\s(\S.+)/
           @sfw = true
@@ -67,6 +68,10 @@ class SlackBot
         else
           "wut?"
       end
+    end
+
+    def maintenance_message
+      "aw nooo... maintenance until further notice ( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )"
     end
   end
 end
