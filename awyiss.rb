@@ -79,10 +79,10 @@ class SlackBot
     def message
       # return maintenance_message
       case text.strip
-        when /^awyiss\ssfw\s(\S.+)/
+        when /^(awyiss||aw\syiss||aww\syiss)\ssfw\s(\S.?+)/
           @sfw = true
           awyissify($1)
-        when /^awyiss\s(\S.+)/
+        when /^(awyiss||aw\syiss||aww\syiss)\s(\S.?+)/
           @sfw = false
           awyissify($1)
         else
