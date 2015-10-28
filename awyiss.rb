@@ -11,7 +11,7 @@ Slack.configure do |config|
 end
 
 module AwYisser
-  URL = "http://awyisser.com/api/generator"
+  URL = "http://ink1001.com/p/lp/116570e1643601f3.png"
 
   def awyissify(phrase)
     if phrase.length > 40
