@@ -18,10 +18,7 @@ module AwYisser
     if phrase.length > 40
       return "aw nooo... your phrase is too long! (40 chars max)"
     end
-    if sfw
-      return "aw yiss motha flippin #{phrase} #{get_image(phrase)}"
-    end
-    "aw yiss motha fuckin #{phrase} #{get_image(phrase)}"
+    "#{get_image(phrase)}"
   end
 
   def get_image(phrase)
