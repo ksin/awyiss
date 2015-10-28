@@ -81,10 +81,10 @@ class SlackBot
       case text.strip
         when /^(awyiss||aw\syiss||aww\syiss)\ssfw\s(\S.?+)/
           @sfw = true
-          awyissify($1)
+          awyissify($2)
         when /^(awyiss||aw\syiss||aww\syiss)\s(\S.?+)/
           @sfw = false
-          awyissify($1)
+          awyissify($2)
         else
           "wut?"
       end
