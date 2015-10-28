@@ -4,7 +4,7 @@ require "uri"
 require "json"
 require "cgi"
 
-puts "WARNING!!! awyisser tweets all your yisses to @awyisser, so maybe don't put anything you don't want tweeted?"
+puts "WARNING!!! awyisser may tweet your yisses to @awyisser, so maybe don't put anything you don't want tweeted?"
 
 Slack.configure do |config|
   config.token = ENV['SLACK_API_TOKEN']
@@ -12,24 +12,23 @@ Slack.configure do |config|
 end
 
 module AwYisser
-  URL = "http://ink1001.com/p/lp/116570e1643601f3.png"
+  URL = ["http://awyisser.com/api/generator", "http://ink1001.com/p/lp/116570e1643601f3.png"]
 
   def awyissify(phrase)
     if phrase.length > 40
       return "aw nooo... your phrase is too long! (40 chars max)"
     end
-    "#{get_image(phrase)}"
+    "#{get_image(phrase, false)}"
   end
 
-  def get_image(phrase)
+  def get_image(phrase, use_awyisser_dot_com)
     params = {"phrase" => phrase}
     params["sfw"] = true if sfw # required to only add sfw key conditionally because {"sfw" => false} still registers as true
-    #post_to_awyisser(params)
-    direct_image_link(params)
-  end
-
-  def direct_image_link(params)
-    "#{URL}?#{parameterize(params)}"
+    if use_awyisser_dot_com
+      response = http_post_request(URL[0], params)
+      return JSON.parse(response.body)["link"]
+    end
+    "#{URL[1]}?#{parameterize(params)}"
   end
 
   def parameterize(params)
@@ -40,11 +39,6 @@ module AwYisser
       "#{k}=#{v}"
     end
     encoded_params.join('&')
-  end
-
-  def post_to_awyisser(params)
-    response = http_post_request(URL, params)
-    JSON.parse(response.body)["link"]
   end
 
   def http_post_request(url, data)
