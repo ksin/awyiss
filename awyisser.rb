@@ -6,17 +6,19 @@ require "cgi"
 module AwYisser
   URL = ["http://awyisser.com/api/generator", "http://ink1001.com/p/lp/116570e1643601f3.png"]
 
+  USE_AWYISSER_DOT_COM = false
+
   def awyissify(phrase)
     if phrase.length > 40
       return "aw nooo... your phrase is too long! (40 chars max)"
     end
-    "#{get_image(phrase, false)}"
+    "#{get_image(phrase)}"
   end
 
-  def get_image(phrase, use_awyisser_dot_com)
+  def get_image(phrase)
     params = {"phrase" => phrase}
     params["sfw"] = true if sfw # required to only add sfw key conditionally because {"sfw" => false} still registers as true
-    if use_awyisser_dot_com
+    if USE_AWYISSER_DOT_COM
       response = http_post_request(URL[0], params)
       return JSON.parse(response.body)["link"]
     end
