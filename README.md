@@ -32,7 +32,7 @@ awyiss sfw hoi!!
 awyiss sfw hoi! im temmie!!!
 ```
 
-***WARNING!!!*** awyisser tweets all your yisses to [@awyisser](https://twitter.com/awyisser), so maybe don't put anything you don't want tweeted?
+***WARNING!!!*** awyisser may tweet your yisses to [@awyisser](https://twitter.com/awyisser) if you configure the image generator URL to awyisser.com, sooo maybe don't say anything mean or confidential. You shouldn't do that anyway!
 
 ## Credits
 
