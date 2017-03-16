@@ -11,7 +11,7 @@ get '/awyiss' do
 end
 
 def verified_token(token)
-  token = ENV['SLACK_COMMAND_TOKEN']
+  token == ENV['SLACK_COMMAND_TOKEN']
 end
 
 def post_message(params)
