@@ -7,7 +7,7 @@ get '/awyiss' do
   return status 401 unless verified_token(params[:token])
   post_message(params)
 
-  startup_message
+  status 200
 end
 
 def verified_token(token)
@@ -26,7 +26,6 @@ def post_message(params)
 end
 
 def awyissify(text)
-  # return maintenance_message # uncomment to put bot in maintenance
   case text.strip
     when /^sfw\s(\S.+)/
       Awyisser.image_url($1, true)
@@ -35,16 +34,4 @@ def awyissify(text)
     else
       Awyisser.image_url("wut?", true)
   end
-end
-
-def maintenance_message
-  "aw nooo... maintenance until further notice ( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )"
-end
-
-def startup_message
-  content_type :json
-  {
-    "response_type": "ephemeral",
-    "text": "Hold on, the awyiss bot is waking up..."
-  }.to_json
 end
