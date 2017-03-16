@@ -39,4 +39,4 @@ The awyisser uses Movable Ink's image generator by default. You can choose to us
 
 ## Credits
 
-Thanks to the wonderful [Kate Beaton](http://harkavagrant.com/) for writing the comic and [@quinnkeast](https://twitter.com/quinnkeast) for making the original awyisser. The bot is inspired by [hubot-awyisser](https://github.com/emilong/hubot-awyisser). Contributors to this project includes: [Ken Sin](https://github.com/ksin) and [Movable Ink](https://github.com/movableink).
+Thanks to the wonderful [Kate Beaton](http://harkavagrant.com/) for writing the [comic](http://www.harkavagrant.com/index.php?id=326) and [@quinnkeast](https://twitter.com/quinnkeast) for making the original awyisser. Contributors to this project includes: [Ken Sin](https://github.com/ksin) and [Movable Ink](https://github.com/movableink).
