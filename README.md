@@ -1,36 +1,39 @@
 # Slack bot awyisser
 
-![awyiss](screencapture.gif)
+![awyiss](screencapture.png)
 
 A simple way to run your own Slack bot for generating awyiss images via the awesome [awyisser](http://www.awyisser.com/).
 
 ## Installation
 
-1. [Create a new bot user](https://my.slack.com/services/new/bot) integration for your Slack group.
+1. Download and deploy this Sinatra app to [Heroku](https://devcenter.heroku.com/articles/rack#sinatra) or whatever service you prefer.
 
-2. Deploy this Sinatra app to [Heroku](https://devcenter.heroku.com/articles/rack#sinatra) or whatever service you prefer.
+2. [Create a new slash command user](https://my.slack.com/services/new/slash-commands) integration for your Slack group. Configure your slash command with the following settings:
+  - Set the Command to "/awyiss"
 
-3. Setup a new [outgoing webhook](https://my.slack.com/services/new/outgoing-webhook) for your Slack group.
+  - Set the URL as the one you deployed your app to + `/awyiss`. For Heroku, it will look something like `https://floating-thunder-7193.herokuapp.com/awyiss`
 
-    - Set the Trigger Word as "awyiss" (and any other words you want)
+  - Set the Method to "GET".
 
-    - Set the URL as the one you deployed your app to + `/awyiss`. For Heroku, it will look something like `https://floating-thunder-7193.herokuapp.com/awyiss`
-
-4. Export your Slack bot's token (NOT your webhook token) as `SLACK_API_TOKEN` to Heroku / other environment.
+3. Export your slash command's Token as `SLACK_COMMAND_TOKEN` to [Heroku](https://devcenter.heroku.com/articles/config-vars#setting-up-config-vars-for-a-deployed-application) / other environment.
 
 ## How to awyiss
 
 ```
-awyiss something awsome happened.
-awyiss motha fuckin very awsome happed.
+/awyiss something awsome happened.
+/awyiss very awsome happed.
 ```
 
 ## Playing it safe (sfw aw yissing)
 
 ```
-awyiss sfw hoi!!
-awyiss sfw hoi! im temmie!!!
+/awyiss sfw hoi!! im temmie!!
+/awyiss sfw lalalala!!!
 ```
+
+## Extra configuration
+
+The awyisser uses Movable Ink's image generator by default. You can choose to use awyisser.com to generate your awyiss image instead by setting `USE_AWYISSER_DOT_COM = true` in `awyisser.rb` before deploying. 
 
 ***WARNING!!!*** awyisser may tweet your yisses to [@awyisser](https://twitter.com/awyisser) if you configure the image generator URL to awyisser.com, sooo maybe don't say anything mean or confidential. You shouldn't do that anyway!
 
