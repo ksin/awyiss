@@ -6,7 +6,11 @@ require_relative 'awyisser'
 get '/awyiss' do
   return status 401 unless verified_token(params[:token])
   post_message(params)
-  status 200
+
+  {
+    "response_type": "ephemeral",
+    "text": "Hold on, the awyiss bot is waking up..."
+  }
 end
 
 def verified_token(token)
@@ -15,12 +19,12 @@ end
 
 def post_message(params)
   image = awyissify(params[:text])
-  HTTParty.post params[:response_url], 
-                body: { "response_type" => "in_channel", 
+  HTTParty.post params[:response_url],
+                body: { "response_type" => "in_channel",
                         "attachments" => [
                           "image_url": image
                         ],
-                        "channel" => params[:channel_id]}.to_json, 
+                        "channel" => params[:channel_id]}.to_json,
                 headers: {'content-type' => 'application/json'}
 end
 
