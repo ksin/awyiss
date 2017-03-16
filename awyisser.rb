@@ -8,14 +8,25 @@ module Awyisser
 
   USE_AWYISSER_DOT_COM = false
 
+  def self.awyissify(text)
+    case text.strip
+      when /^sfw\s(\S.+)/
+        image_url($1, true)
+      when /^(\S.+)/
+        image_url($1, false)
+      else
+        image_url("wut?", true)
+    end
+  end
+
+  private
+
   def self.image_url(phrase, sfw)
     if phrase.length > 40
       return "aw nooo... your phrase is too long! (40 chars max)"
     end
     "#{fetch(phrase, sfw)}"
   end
-
-  private
 
   def self.fetch(phrase, sfw)
     params = {"phrase" => phrase}
