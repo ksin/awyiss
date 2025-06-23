@@ -38,7 +38,7 @@ module Awyisser
     end
   end
 
-  def awyisser_dot_com_url(params)
+  def self.awyisser_dot_com_url(params)
     response = http_post_request(URL[0], params)
     JSON.parse(response.body)["link"]
   end
